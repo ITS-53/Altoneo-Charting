@@ -38,7 +38,12 @@ Si votre `tailwind.config.js` est en ESM (`export default`) :
 
 ```js
 import altoneoPreset from "altoneo-charting/tailwind-preset";
-export default { presets: [altoneoPreset], content: [/* … */] };
+export default {
+  presets: [altoneoPreset],
+  content: [
+    /* … */
+  ],
+};
 ```
 
 ### 2. Enregistrer les composants
@@ -62,7 +67,9 @@ createApp(App).use(AltoneoUI).mount("#app");
     <AltFormField label="Nom du client" required :error="form.errors.name">
       <AltInput v-model="form.values.name" @blur="form.handleBlur('name')" />
     </AltFormField>
-    <AltButton variant="primary" :disabled="!form.isValid" @click="submit">Créer</AltButton>
+    <AltButton variant="primary" :disabled="!form.isValid" @click="submit"
+      >Créer</AltButton
+    >
   </AltCard>
 </template>
 
@@ -83,27 +90,27 @@ import { AltButton, AltModal, useForm, email } from "altoneo-charting";
 
 ## Composants
 
-| Composant | Rôle |
-|---|---|
-| `AltButton` | Boutons : variants `primary/secondary/navy/danger/ghost`, tailles, `loading`, slots d'icônes |
-| `AltInput` / `AltTextarea` / `AltSelect` | Champs de saisie avec états `default/error/success`, affixes |
-| `AltCheckbox` / `AltRadioGroup` / `AltSwitch` | Contrôles booléens et choix |
-| `AltFormField` | Wrapper label + champ + message d'aide/erreur (a11y) |
-| `AltCard` | Carte avec slots header/footer |
-| `AltBadge` | Badges sémantiques + statuts métier (`pending/sent/partial/completed/draft`) |
-| `AltAlert` | Encarts d'alerte `info/success/warning/error`, dismissible |
-| `AltModal` | Modale (teleport, overlay, esc, clic-dehors), `v-model:open` |
-| `AltTable` | Tableau avec tri, état vide, état de chargement, slots de cellule |
-| `AltTabs` | Onglets (soulignement ou pilule) |
-| `AltPagination` | Pagination avec ellipses |
-| `AltNavbar` | Barre de navigation (compatible vue-router via `link-component`) |
-| `AltToast` + `AltToastContainer` | Notifications, pilotées par `useToast()` |
-| `AltTooltip` / `AltAvatar` / `AltSpinner` / `AltLogo` | Utilitaires d'interface et marque |
-| `AltAuthCard` | Gabarit générique de page d'authentification (logo + titre + slot formulaire) |
-| `AltLoginForm` / `AltRegisterForm` / `AltContactForm` | Formulaires câblés (validation intégrée), émettent `@submit` avec les valeurs validées |
-| `AltSidebar` / `AltTopbar` / `AltFooter` | Pièces de navigation (compatibles vue-router via `link-component`) |
-| `AltAppLayout` | Shell d'application : sidebar repliable + topbar + contenu + footer, responsive |
-| `AltErrorPage` | Page d'erreur générique avec presets `401/403/404/500/502/503` |
+| Composant                                             | Rôle                                                                                         |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `AltButton`                                           | Boutons : variants `primary/secondary/navy/danger/ghost`, tailles, `loading`, slots d'icônes |
+| `AltInput` / `AltTextarea` / `AltSelect`              | Champs de saisie avec états `default/error/success`, affixes                                 |
+| `AltCheckbox` / `AltRadioGroup` / `AltSwitch`         | Contrôles booléens et choix                                                                  |
+| `AltFormField`                                        | Wrapper label + champ + message d'aide/erreur (a11y)                                         |
+| `AltCard`                                             | Carte avec slots header/footer                                                               |
+| `AltBadge`                                            | Badges sémantiques + statuts métier (`pending/sent/partial/completed/draft`)                 |
+| `AltAlert`                                            | Encarts d'alerte `info/success/warning/error`, dismissible                                   |
+| `AltModal`                                            | Modale (teleport, overlay, esc, clic-dehors), `v-model:open`                                 |
+| `AltTable`                                            | Tableau avec tri, état vide, état de chargement, slots de cellule                            |
+| `AltTabs`                                             | Onglets (soulignement ou pilule)                                                             |
+| `AltPagination`                                       | Pagination avec ellipses                                                                     |
+| `AltNavbar`                                           | Barre de navigation (compatible vue-router via `link-component`)                             |
+| `AltToast` + `AltToastContainer`                      | Notifications, pilotées par `useToast()`                                                     |
+| `AltTooltip` / `AltAvatar` / `AltSpinner` / `AltLogo` | Utilitaires d'interface et marque                                                            |
+| `AltAuthCard`                                         | Gabarit générique de page d'authentification (logo + titre + slot formulaire)                |
+| `AltLoginForm` / `AltRegisterForm` / `AltContactForm` | Formulaires câblés (validation intégrée), émettent `@submit` avec les valeurs validées       |
+| `AltSidebar` / `AltTopbar` / `AltFooter`              | Pièces de navigation (compatibles vue-router via `link-component`)                           |
+| `AltAppLayout`                                        | Shell d'application : sidebar repliable + topbar + contenu + footer, responsive              |
+| `AltErrorPage`                                        | Page d'erreur générique avec presets `401/403/404/500/502/503`                               |
 
 ### Validation des formulaires
 
@@ -137,9 +144,12 @@ Tous les composants embarquent leurs variantes `dark:`.
 `AltLogo` accepte une marque en **prop** — pas besoin de dupliquer les composants :
 
 ```vue
-<AltLogo brand="altoneo" variant="light" />   <!-- logo Altonéo -->
-<AltLogo brand="its" />                         <!-- logo IT Solutions (version blanche) -->
-<AltLogo :src="monLogo" />                      <!-- surcharge complète -->
+<AltLogo brand="altoneo" variant="light" />
+<!-- logo Altonéo -->
+<AltLogo brand="its" />
+<!-- logo IT Solutions (version blanche) -->
+<AltLogo :src="monLogo" />
+<!-- surcharge complète -->
 ```
 
 La prop `brand` (`'altoneo'` | `'its'`) est aussi disponible sur `AltNavbar`, `AltSidebar`,
@@ -161,9 +171,12 @@ sémantiques `alt-*` — aucune dépendance, aucun JS.
 
 ```html
 <link rel="stylesheet" href="dist/altoneo.css" />
-<body class="alt-report">            <!-- ajouter `alt-dark` pour le thème sombre -->
+<body class="alt-report">
+  <!-- ajouter `alt-dark` pour le thème sombre -->
   <div class="alt-card">
-    <div class="alt-card__header"><h3 class="alt-card__title">MARTIN SAS</h3></div>
+    <div class="alt-card__header">
+      <h3 class="alt-card__title">MARTIN SAS</h3>
+    </div>
     <div class="alt-card__body">
       <span class="alt-badge alt-badge--completed">Terminé</span>
       <button class="alt-btn alt-btn--primary">Exporter</button>
@@ -204,7 +217,7 @@ Exemple complet exécutable : [`powershell/Example-Report.ps1`](powershell/Examp
 2. **Rapport rendu côté client (JS)** — le script embarque un payload (souvent chiffré) et du
    JavaScript qui génère le DOM dans le navigateur. → Inlinez `Get-AltoneoCss` dans le `<style>`
    et émettez les classes `alt-*` **dans le HTML statique ET dans les littéraux JS**. C'est fiable
-   car `altoneo.css` contient **toutes** les classes en permanence (aucun *purge* Tailwind) : les
+   car `altoneo.css` contient **toutes** les classes en permanence (aucun _purge_ Tailwind) : les
    classes posées au runtime existent toujours. Le thème sombre fonctionne via `.alt-dark` **ou**
    `[data-theme="dark"]`.
 
