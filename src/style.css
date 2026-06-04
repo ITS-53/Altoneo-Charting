@@ -1,0 +1,21 @@
+/**
+ * Feuille de style de base — pour le DEV et STORYBOOK uniquement.
+ *
+ * Un projet consommateur n'a PAS besoin d'importer ce fichier : il génère ses
+ * propres utilitaires Tailwind à partir du preset. Les composants `.vue`
+ * embarquent toutes leurs classes ; les classes globales (.btn-*, .input, .card,
+ * .badge-*) sont fournies par le plugin du preset.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-altoneo-50 text-gray-900 antialiased;
+    font-family: theme("fontFamily.sans");
+  }
+  .dark body {
+    @apply bg-alt-dark-app text-altoneo-50;
+  }
+}

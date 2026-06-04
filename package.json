@@ -1,0 +1,56 @@
+{
+  "name": "altoneo-charting",
+  "version": "0.1.0",
+  "description": "Bibliothèque de composants Vue 3 + TailwindCSS portant l'identité visuelle Altonéo",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ITS-53/Altoneo-Charting.git"
+  },
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./tailwind-preset": "./tailwind-preset.cjs",
+    "./style.css": "./src/style.css",
+    "./css": "./dist/altoneo.css",
+    "./tokens": "./src/tokens/colors.js",
+    "./assets/*": "./src/assets/*"
+  },
+  "files": [
+    "src",
+    "dist",
+    "html",
+    "powershell",
+    "tailwind-preset.cjs",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.vue"
+  ],
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.4.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/vue3": "^8.6.14",
+    "@storybook/vue3-vite": "^8.6.14",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "storybook": "^8.6.14",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.11",
+    "vue": "^3.5.13"
+  }
+}

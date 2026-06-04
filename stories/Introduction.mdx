@@ -1,0 +1,78 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# Altonéo Charting
+
+Bibliothèque de composants **Vue 3 + TailwindCSS** portant l'identité visuelle d'Altonéo.
+Installez-la dans n'importe quel projet pour réutiliser la charte (couleurs, logos) et un jeu de
+composants prêts à l'emploi : boutons, formulaires validés, cartes, badges, modales, tableaux, toasts…
+
+---
+
+## Installation dans un nouveau projet
+
+```bash
+npm install github:ITS-53/Altoneo-Charting
+```
+
+> Prérequis : le projet consommateur utilise **Vue 3** et **TailwindCSS v3**.
+
+### 1. Brancher le preset Tailwind
+
+`tailwind.config.js` :
+
+```js
+module.exports = {
+  presets: [require("altoneo-charting/tailwind-preset")],
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts}",
+    // Indispensable : laisser Tailwind scanner les classes des composants
+    "./node_modules/altoneo-charting/src/**/*.{vue,js}",
+  ],
+};
+```
+
+### 2. Enregistrer les composants
+
+`main.js` :
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import AltoneoUI from "altoneo-charting";
+import "./assets/main.css"; // votre CSS avec @tailwind base/components/utilities
+
+createApp(App).use(AltoneoUI).mount("#app");
+```
+
+### 3. Utiliser
+
+```vue
+<template>
+  <AltCard title="Bienvenue">
+    <AltButton variant="primary" @click="go">Commencer</AltButton>
+  </AltCard>
+</template>
+```
+
+Ou en imports nommés (tree-shaking) :
+
+```js
+import { AltButton, useForm, required, email } from "altoneo-charting";
+```
+
+---
+
+## Ce que contient la bibliothèque
+
+- **Composants** — `Alt…` : boutons, champs de formulaire, carte, badge, alerte, modale,
+  tableau, onglets, pagination, navbar, toasts, tooltip, avatar, logo, spinner.
+- **Validation** — `useForm` + règles (`required`, `email`, `minLength`, `sameAs`…).
+- **Toasts** — `createToastStore` / `useToast` + `<AltToastContainer />`.
+- **Tokens** — palette exportée en JS (`altoneo`, `chartPalette`…) pour les graphiques.
+- **Preset Tailwind** — échelle `altoneo` 50→900, couleurs nommées, classes `.btn-*`, `.input`, `.card`, `.badge-*`.
+
+Parcourez la barre latérale pour voir chaque composant, ses props (onglet **Controls**)
+et ses variantes d'états.

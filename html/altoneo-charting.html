@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altonéo Charting — Référence HTML/CSS</title>
+  <!-- En production : <link rel="stylesheet" href="../dist/altoneo.css"> -->
+  <link rel="stylesheet" href="../dist/altoneo.css" />
+  <style>
+    .demo-section { margin-bottom: 2.5rem; }
+    .demo-section > h2 { border-bottom: 2px solid var(--alt-200); padding-bottom: .25rem; }
+  </style>
+</head>
+<body class="alt-report">
+  <div class="alt-container">
+    <div class="alt-row alt-row--between" style="margin-bottom:1.5rem;">
+      <div>
+        <h1 class="alt-h1">Altonéo Charting — variante HTML / CSS</h1>
+        <p class="alt-muted">Classes sémantiques <code>alt-*</code>, sans Tailwind ni JS. Idéal pour les rapports générés (PowerShell).</p>
+      </div>
+      <button class="alt-btn alt-btn--secondary" onclick="document.body.classList.toggle('alt-dark')">Basculer thème</button>
+    </div>
+
+    <!-- Boutons -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Boutons</h2>
+      <div class="alt-row" style="flex-wrap:wrap;gap:.75rem;">
+        <button class="alt-btn alt-btn--primary">Primary</button>
+        <button class="alt-btn alt-btn--secondary">Secondary</button>
+        <button class="alt-btn alt-btn--navy">Navy</button>
+        <button class="alt-btn alt-btn--danger">Danger</button>
+        <button class="alt-btn alt-btn--ghost">Ghost</button>
+        <button class="alt-btn alt-btn--primary alt-btn--sm">Small</button>
+        <button class="alt-btn alt-btn--primary alt-btn--lg">Large</button>
+      </div>
+    </section>
+
+    <!-- Badges & chips -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Badges &amp; statuts</h2>
+      <div class="alt-row" style="flex-wrap:wrap;gap:.5rem;">
+        <span class="alt-badge alt-badge--neutral">Neutral</span>
+        <span class="alt-badge alt-badge--info">Info</span>
+        <span class="alt-badge alt-badge--success">Succès</span>
+        <span class="alt-badge alt-badge--warning">Attention</span>
+        <span class="alt-badge alt-badge--error">Erreur</span>
+        <span class="alt-badge alt-badge--draft">Brouillon</span>
+        <span class="alt-badge alt-badge--pending">En attente</span>
+        <span class="alt-badge alt-badge--sent">Envoyé</span>
+        <span class="alt-badge alt-badge--partial">Partiel</span>
+        <span class="alt-badge alt-badge--completed">Terminé</span>
+      </div>
+    </section>
+
+    <!-- KPIs -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Statistiques (KPI)</h2>
+      <div class="alt-grid alt-grid--3">
+        <div class="alt-stat">
+          <p class="alt-stat__label">Contrôles en cours</p>
+          <p class="alt-stat__value">12</p>
+          <span class="alt-stat__delta alt-stat__delta--up">▲ 8% vs mois dernier</span>
+        </div>
+        <div class="alt-stat">
+          <p class="alt-stat__label">Taux de réponse</p>
+          <p class="alt-stat__value">86%</p>
+          <span class="alt-stat__delta alt-stat__delta--down">▼ 3%</span>
+        </div>
+        <div class="alt-stat">
+          <p class="alt-stat__label">Clôturés (mois)</p>
+          <p class="alt-stat__value">28</p>
+          <span class="alt-stat__delta alt-stat__delta--up">▲ 12%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carte + alerte -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Cartes &amp; alertes</h2>
+      <div class="alt-grid alt-grid--2">
+        <div class="alt-card">
+          <div class="alt-card__header">
+            <h3 class="alt-card__title">MARTIN SAS</h3>
+            <p class="alt-card__subtitle">Contrôle d'indépendance · Altonéo Audit</p>
+          </div>
+          <div class="alt-card__body">
+            <p style="margin:0;">8 associés circularisés, aucune anomalie détectée.</p>
+            <div style="margin-top:1rem;">
+              <div class="alt-row alt-row--between" style="font-size:.875rem;margin-bottom:.25rem;">
+                <span>Avancement</span><span class="alt-muted">72%</span>
+              </div>
+              <div class="alt-progress"><div class="alt-progress__bar" style="width:72%"></div></div>
+            </div>
+          </div>
+          <div class="alt-card__footer">
+            <button class="alt-btn alt-btn--secondary alt-btn--sm">Détails</button>
+            <button class="alt-btn alt-btn--primary alt-btn--sm">Exporter</button>
+          </div>
+        </div>
+
+        <div class="alt-stack">
+          <div class="alt-alert alt-alert--info"><div><p class="alt-alert__title">Information</p>Un nouveau contrôle est disponible.</div></div>
+          <div class="alt-alert alt-alert--success"><div><p class="alt-alert__title">Envoyé</p>Les e-mails ont bien été envoyés.</div></div>
+          <div class="alt-alert alt-alert--warning"><div><p class="alt-alert__title">Attention</p>3 associés n'ont pas répondu.</div></div>
+          <div class="alt-alert alt-alert--error"><div><p class="alt-alert__title">Erreur</p>Échec de l'envoi SMTP.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tableau -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Tableau</h2>
+      <table class="alt-table alt-table--striped alt-table--bordered">
+        <thead>
+          <tr><th>Client</th><th>Entité</th><th>Associés</th><th>Statut</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MARTIN SAS</td><td>Altonéo Audit</td><td>8</td><td><span class="alt-badge alt-badge--completed">Terminé</span></td></tr>
+          <tr><td>DURAND SARL</td><td>Altonéo Conseil</td><td>3</td><td><span class="alt-badge alt-badge--partial">Partiel</span></td></tr>
+          <tr><td>PETIT SCI</td><td>Altonéo Audit</td><td>5</td><td><span class="alt-badge alt-badge--sent">Envoyé</span></td></tr>
+          <tr><td>BERNARD SA</td><td>Altonéo Dév.</td><td>12</td><td><span class="alt-badge alt-badge--pending">En attente</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Formulaire -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Formulaire</h2>
+      <div class="alt-card"><div class="alt-card__body" style="max-width:28rem;">
+        <div class="alt-field">
+          <label class="alt-label">Nom du client <span class="alt-label__req">*</span></label>
+          <input class="alt-input" placeholder="ex: MARTIN SAS" />
+        </div>
+        <div class="alt-field">
+          <label class="alt-label">Entité</label>
+          <select class="alt-select"><option>Altonéo Audit</option><option>Altonéo Conseil</option></select>
+        </div>
+        <div class="alt-field">
+          <label class="alt-label">Commentaire</label>
+          <textarea class="alt-textarea" rows="3" placeholder="Votre message…"></textarea>
+          <p class="alt-help">500 caractères maximum.</p>
+        </div>
+        <button class="alt-btn alt-btn--primary alt-btn--block">Enregistrer</button>
+      </div></div>
+    </section>
+
+    <!-- Navbar / onglets / pagination -->
+    <section class="demo-section">
+      <h2 class="alt-h2">Navigation</h2>
+      <nav class="alt-navbar" style="border-radius:.75rem;">
+        <div class="alt-navbar__brand">Altonéo</div>
+        <div class="alt-navbar__links">
+          <a class="alt-navbar__link alt-navbar__link--active" href="#">Tableau de bord</a>
+          <a class="alt-navbar__link" href="#">Clients</a>
+          <a class="alt-navbar__link" href="#">Associés</a>
+        </div>
+      </nav>
+
+      <div class="alt-tabs" style="margin-top:1.5rem;">
+        <a class="alt-tab alt-tab--active" href="#">Informations</a>
+        <a class="alt-tab" href="#">Associés</a>
+        <a class="alt-tab" href="#">Historique</a>
+      </div>
+
+      <div class="alt-pagination" style="margin-top:1.5rem;">
+        <a class="alt-page" href="#">‹</a>
+        <a class="alt-page" href="#">1</a>
+        <a class="alt-page alt-page--active" href="#">2</a>
+        <a class="alt-page" href="#">3</a>
+        <a class="alt-page" href="#">›</a>
+      </div>
+    </section>
+
+    <footer class="alt-footer" style="border-radius:.75rem;">
+      <p class="alt-footer__copy">© 2026 Altonéo. Rapport généré automatiquement.</p>
+    </footer>
+  </div>
+</body>
+</html>
