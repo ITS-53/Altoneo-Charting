@@ -106,19 +106,9 @@ export function useForm(initialValues = {}, schema = {}, options = {}) {
   }
 
   return {
-    values,
-    errors,
-    touched,
-    isValid,
-    isDirty,
-    validateField,
-    validate,
-    handleBlur,
-    reset,
-    setValues,
-    setErrors,
-    handleSubmit,
-    fieldProps,
+    values, errors, touched, isValid, isDirty,
+    validateField, validate, handleBlur, reset,
+    setValues, setErrors, handleSubmit, fieldProps,
   };
 }
 

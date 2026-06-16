@@ -5,7 +5,7 @@
     :style="{ height: size + 'px', width: 'auto' }"
     class="block select-none"
     draggable="false"
-  />
+  >
 </template>
 
 <script setup>

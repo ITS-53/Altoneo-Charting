@@ -1,7 +1,11 @@
 <template>
   <nav aria-label="Fil d'ariane">
     <ol class="flex flex-wrap items-center gap-1.5 text-sm">
-      <li v-for="(item, i) in items" :key="i" class="flex items-center gap-1.5">
+      <li
+        v-for="(item, i) in items"
+        :key="i"
+        class="flex items-center gap-1.5"
+      >
         <component
           :is="item.to && i < items.length - 1 ? linkComponent : 'span'"
           v-bind="item.to && i < items.length - 1 ? linkProps(item.to) : {}"
@@ -13,7 +17,11 @@
         >
           {{ item.label }}
         </component>
-        <span v-if="i < items.length - 1" class="text-gray-300 dark:text-alt-dark-border select-none" aria-hidden="true">
+        <span
+          v-if="i < items.length - 1"
+          class="text-gray-300 dark:text-alt-dark-border select-none"
+          aria-hidden="true"
+        >
           <slot name="separator">{{ separator }}</slot>
         </span>
       </li>

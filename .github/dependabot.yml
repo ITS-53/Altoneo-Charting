@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # Dépendances npm (devDeps : Vite, Storybook, ESLint…) + dépendances transitives
+  # vulnérables (esbuild, uuid) — Dependabot ouvrira des PR quand des versions
+  # corrigées compatibles seront disponibles.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*"
+
+  # Actions GitHub utilisées par la CI (le cas échéant)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

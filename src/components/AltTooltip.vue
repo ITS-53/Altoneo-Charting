@@ -1,5 +1,11 @@
 <template>
-  <span class="relative inline-flex" @mouseenter="show = true" @mouseleave="show = false" @focusin="show = true" @focusout="show = false">
+  <span
+    class="relative inline-flex"
+    @mouseenter="show = true"
+    @mouseleave="show = false"
+    @focusin="show = true"
+    @focusout="show = false"
+  >
     <slot />
     <transition name="alt-tip">
       <span
@@ -9,7 +15,10 @@
         :class="positionClass"
       >
         {{ content }}
-        <span class="absolute w-2 h-2 bg-altoneo-800 rotate-45" :class="arrowClass" />
+        <span
+          class="absolute w-2 h-2 bg-altoneo-800 rotate-45"
+          :class="arrowClass"
+        />
       </span>
     </transition>
   </span>

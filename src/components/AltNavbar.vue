@@ -1,12 +1,23 @@
 <template>
   <nav class="bg-altoneo-800 text-white shadow-lg">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8" :class="containerClass">
+    <div
+      class="mx-auto px-4 sm:px-6 lg:px-8"
+      :class="containerClass"
+    >
       <div class="flex items-center justify-between h-16">
         <!-- Marque + navigation -->
         <div class="flex items-center gap-8">
           <slot name="brand">
-            <component :is="linkComponent" v-bind="linkProps(brandTo)" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
-              <AltLogo :size="40" :brand="brand" variant="dark" />
+            <component
+              :is="linkComponent"
+              v-bind="linkProps(brandTo)"
+              class="flex items-center gap-3 hover:opacity-90 transition-opacity"
+            >
+              <AltLogo
+                :size="40"
+                :brand="brand"
+                variant="dark"
+              />
               <span
                 v-if="subtitle"
                 class="hidden sm:block text-[10px] text-altoneo-100 uppercase tracking-widest leading-none border-l border-altoneo-700 pl-3"
@@ -16,9 +27,15 @@
             </component>
           </slot>
 
-          <div v-if="items.length" class="hidden md:block w-px h-6 bg-altoneo-700" />
+          <div
+            v-if="items.length"
+            class="hidden md:block w-px h-6 bg-altoneo-700"
+          />
 
-          <div v-if="items.length" class="hidden md:flex items-center gap-1">
+          <div
+            v-if="items.length"
+            class="hidden md:flex items-center gap-1"
+          >
             <component
               :is="linkComponent"
               v-for="item in items"
@@ -45,7 +62,6 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
 import AltLogo from "./AltLogo.vue";
 
 const props = defineProps({

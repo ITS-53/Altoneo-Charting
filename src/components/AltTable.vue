@@ -13,12 +13,31 @@
           >
             <span class="inline-flex items-center gap-1">
               {{ col.label }}
-              <span v-if="col.sortable" class="text-altoneo-400">
-                <svg v-if="sortKey === col.key" class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
-                  <path v-if="sortDir === 'asc'" d="M10 5l5 6H5l5-6z" />
-                  <path v-else d="M10 15l-5-6h10l-5 6z" />
+              <span
+                v-if="col.sortable"
+                class="text-altoneo-400"
+              >
+                <svg
+                  v-if="sortKey === col.key"
+                  class="w-3 h-3"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    v-if="sortDir === 'asc'"
+                    d="M10 5l5 6H5l5-6z"
+                  />
+                  <path
+                    v-else
+                    d="M10 15l-5-6h10l-5 6z"
+                  />
                 </svg>
-                <svg v-else class="w-3 h-3 opacity-30" viewBox="0 0 20 20" fill="currentColor">
+                <svg
+                  v-else
+                  class="w-3 h-3 opacity-30"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
                   <path d="M10 4l4 5H6l4-5zM10 16l-4-5h8l-4 5z" />
                 </svg>
               </span>
@@ -29,13 +48,21 @@
 
       <tbody class="divide-y divide-gray-100 dark:divide-alt-dark-border bg-white dark:bg-alt-dark-surface">
         <tr v-if="loading">
-          <td :colspan="columns.length" class="px-4 py-10 text-center text-gray-400">
+          <td
+            :colspan="columns.length"
+            class="px-4 py-10 text-center text-gray-400"
+          >
             <AltSpinner class="inline-block" /> Chargement…
           </td>
         </tr>
         <tr v-else-if="!sortedRows.length">
-          <td :colspan="columns.length" class="px-4 py-10 text-center text-gray-400">
-            <slot name="empty">{{ emptyText }}</slot>
+          <td
+            :colspan="columns.length"
+            class="px-4 py-10 text-center text-gray-400"
+          >
+            <slot name="empty">
+              {{ emptyText }}
+            </slot>
           </td>
         </tr>
         <tr
@@ -52,7 +79,11 @@
             class="px-4 py-3 text-gray-700 dark:text-altoneo-100 whitespace-nowrap"
             :class="col.align ? `text-${col.align}` : ''"
           >
-            <slot :name="`cell-${col.key}`" :row="row" :value="row[col.key]">
+            <slot
+              :name="`cell-${col.key}`"
+              :row="row"
+              :value="row[col.key]"
+            >
               {{ row[col.key] }}
             </slot>
           </td>

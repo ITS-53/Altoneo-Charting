@@ -1,5 +1,8 @@
 <template>
-  <div role="radiogroup" :class="inline ? 'flex flex-wrap gap-4' : 'space-y-2'">
+  <div
+    role="radiogroup"
+    :class="inline ? 'flex flex-wrap gap-4' : 'space-y-2'"
+  >
     <label
       v-for="opt in normalizedOptions"
       :key="opt.value"
@@ -14,7 +17,7 @@
         :checked="modelValue === opt.value"
         :disabled="disabled || opt.disabled"
         @change="$emit('update:modelValue', opt.value)"
-      />
+      >
       <span class="text-sm text-gray-700 dark:text-altoneo-100 select-none">{{ opt.label }}</span>
     </label>
   </div>

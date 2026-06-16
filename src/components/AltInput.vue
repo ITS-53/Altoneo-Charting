@@ -23,7 +23,7 @@
       @input="$emit('update:modelValue', $event.target.value)"
       @blur="$emit('blur', $event)"
       @focus="$emit('focus', $event)"
-    />
+    >
 
     <span
       v-if="$slots.suffix"

@@ -18,7 +18,10 @@
         :style="{ left: modelValue ? knobOnLeft : '0.125rem' }"
       />
     </button>
-    <span v-if="label || $slots.default" class="text-sm text-gray-700 dark:text-altoneo-100 select-none">
+    <span
+      v-if="label || $slots.default"
+      class="text-sm text-gray-700 dark:text-altoneo-100 select-none"
+    >
       <slot>{{ label }}</slot>
     </span>
   </label>

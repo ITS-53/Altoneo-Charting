@@ -2,22 +2,43 @@
   <div class="min-h-screen flex items-center justify-center p-6 bg-altoneo-50 dark:bg-alt-dark-app">
     <div class="text-center max-w-lg">
       <slot name="illustration">
-        <p class="font-black leading-none text-altoneo-800 dark:text-altoneo-100 select-none" style="font-size: clamp(5rem, 18vw, 9rem)">
+        <p
+          class="font-black leading-none text-altoneo-800 dark:text-altoneo-100 select-none"
+          style="font-size: clamp(5rem, 18vw, 9rem)"
+        >
           {{ code }}
         </p>
       </slot>
 
-      <h1 class="mt-2 text-2xl font-bold text-altoneo-800 dark:text-altoneo-50">{{ resolvedTitle }}</h1>
-      <p class="mt-2 text-gray-500 dark:text-alt-dark-muted">{{ resolvedMessage }}</p>
+      <h1 class="mt-2 text-2xl font-bold text-altoneo-800 dark:text-altoneo-50">
+        {{ resolvedTitle }}
+      </h1>
+      <p class="mt-2 text-gray-500 dark:text-alt-dark-muted">
+        {{ resolvedMessage }}
+      </p>
 
       <div class="mt-8 flex items-center justify-center gap-3">
         <slot name="actions">
-          <AltButton :href="homeHref" variant="primary">Retour à l'accueil</AltButton>
-          <AltButton v-if="showRetry" variant="secondary" @click="$emit('retry')">Réessayer</AltButton>
+          <AltButton
+            :href="homeHref"
+            variant="primary"
+          >
+            Retour à l'accueil
+          </AltButton>
+          <AltButton
+            v-if="showRetry"
+            variant="secondary"
+            @click="$emit('retry')"
+          >
+            Réessayer
+          </AltButton>
         </slot>
       </div>
 
-      <div v-if="$slots.footer" class="mt-6 text-sm text-gray-400">
+      <div
+        v-if="$slots.footer"
+        class="mt-6 text-sm text-gray-400"
+      >
         <slot name="footer" />
       </div>
     </div>

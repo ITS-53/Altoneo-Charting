@@ -10,7 +10,7 @@
       :src="src"
       :alt="name || 'avatar'"
       class="w-full h-full object-cover"
-    />
+    >
     <slot v-else>{{ initials }}</slot>
   </span>
 </template>

@@ -11,7 +11,13 @@
       @change="$emit('update:modelValue', $event.target.value)"
       @blur="$emit('blur', $event)"
     >
-      <option v-if="placeholder" value="" disabled>{{ placeholder }}</option>
+      <option
+        v-if="placeholder"
+        value=""
+        disabled
+      >
+        {{ placeholder }}
+      </option>
       <slot>
         <option
           v-for="opt in normalizedOptions"

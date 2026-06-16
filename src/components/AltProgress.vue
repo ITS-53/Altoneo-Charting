@@ -1,8 +1,14 @@
 <template>
   <div>
-    <div v-if="label || showValue" class="flex items-center justify-between mb-1 text-sm">
+    <div
+      v-if="label || showValue"
+      class="flex items-center justify-between mb-1 text-sm"
+    >
       <span class="font-medium text-altoneo-800 dark:text-altoneo-100">{{ label }}</span>
-      <span v-if="showValue" class="text-gray-500 dark:text-alt-dark-muted">{{ percent }}%</span>
+      <span
+        v-if="showValue"
+        class="text-gray-500 dark:text-alt-dark-muted"
+      >{{ percent }}%</span>
     </div>
     <div
       class="w-full overflow-hidden rounded-full bg-gray-200 dark:bg-alt-dark-raised"

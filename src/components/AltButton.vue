@@ -10,8 +10,14 @@
     :class="[variantClass, sizeClass, { 'w-full': block }]"
     @click="onClick"
   >
-    <AltSpinner v-if="loading" :size="spinnerSize" />
-    <slot v-else name="icon-left" />
+    <AltSpinner
+      v-if="loading"
+      :size="spinnerSize"
+    />
+    <slot
+      v-else
+      name="icon-left"
+    />
     <slot v-if="$slots.default" />
     <slot name="icon-right" />
   </component>

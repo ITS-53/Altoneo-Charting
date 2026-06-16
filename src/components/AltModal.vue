@@ -28,7 +28,9 @@
           >
             <div class="min-w-0">
               <slot name="header">
-                <h3 class="font-semibold text-lg text-altoneo-800 dark:text-altoneo-50">{{ title }}</h3>
+                <h3 class="font-semibold text-lg text-altoneo-800 dark:text-altoneo-50">
+                  {{ title }}
+                </h3>
               </slot>
             </div>
             <button
@@ -38,8 +40,18 @@
               aria-label="Fermer"
               @click="close"
             >
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -48,7 +60,10 @@
             <slot />
           </div>
 
-          <div v-if="$slots.footer" class="px-6 py-4 border-t border-gray-100 dark:border-alt-dark-border bg-gray-50 dark:bg-alt-dark-raised rounded-b-xl flex items-center justify-end gap-3">
+          <div
+            v-if="$slots.footer"
+            class="px-6 py-4 border-t border-gray-100 dark:border-alt-dark-border bg-gray-50 dark:bg-alt-dark-raised rounded-b-xl flex items-center justify-end gap-3"
+          >
             <slot name="footer" />
           </div>
         </div>

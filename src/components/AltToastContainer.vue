@@ -5,7 +5,11 @@
       :class="positionClass"
     >
       <transition-group name="alt-toast">
-        <div v-for="t in toasts" :key="t.id" class="pointer-events-auto">
+        <div
+          v-for="t in toasts"
+          :key="t.id"
+          class="pointer-events-auto"
+        >
           <AltToast
             :variant="t.variant"
             :title="t.title"

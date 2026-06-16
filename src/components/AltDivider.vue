@@ -5,12 +5,23 @@
     role="separator"
     aria-orientation="vertical"
   />
-  <div v-else class="flex items-center" :class="spacingClass" role="separator">
+  <div
+    v-else
+    class="flex items-center"
+    :class="spacingClass"
+    role="separator"
+  >
     <span class="flex-1 h-px bg-gray-200 dark:bg-alt-dark-border" />
-    <span v-if="label || $slots.default" class="px-3 text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-alt-dark-muted">
+    <span
+      v-if="label || $slots.default"
+      class="px-3 text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-alt-dark-muted"
+    >
       <slot>{{ label }}</slot>
     </span>
-    <span v-if="label || $slots.default" class="flex-1 h-px bg-gray-200 dark:bg-alt-dark-border" />
+    <span
+      v-if="label || $slots.default"
+      class="flex-1 h-px bg-gray-200 dark:bg-alt-dark-border"
+    />
   </div>
 </template>
 

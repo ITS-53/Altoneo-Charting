@@ -14,15 +14,45 @@
       @update:collapsed="collapsed = $event"
       @navigate="$emit('navigate', $event)"
     >
-      <template v-if="$slots['sidebar-header']" #header="s"><slot name="sidebar-header" v-bind="s" /></template>
-      <template v-if="$slots['sidebar-icon']" #icon="s"><slot name="sidebar-icon" v-bind="s" /></template>
-      <template v-if="$slots['sidebar-footer']" #footer="s"><slot name="sidebar-footer" v-bind="s" /></template>
+      <template
+        v-if="$slots['sidebar-header']"
+        #header="s"
+      >
+        <slot
+          name="sidebar-header"
+          v-bind="s"
+        />
+      </template>
+      <template
+        v-if="$slots['sidebar-icon']"
+        #icon="s"
+      >
+        <slot
+          name="sidebar-icon"
+          v-bind="s"
+        />
+      </template>
+      <template
+        v-if="$slots['sidebar-footer']"
+        #footer="s"
+      >
+        <slot
+          name="sidebar-footer"
+          v-bind="s"
+        />
+      </template>
     </AltSidebar>
 
     <!-- Sidebar (mobile, overlay) -->
     <transition name="alt-drawer">
-      <div v-if="mobileOpen" class="fixed inset-0 z-40 md:hidden">
-        <div class="absolute inset-0 bg-altoneo-900/50" @click="mobileOpen = false" />
+      <div
+        v-if="mobileOpen"
+        class="fixed inset-0 z-40 md:hidden"
+      >
+        <div
+          class="absolute inset-0 bg-altoneo-900/50"
+          @click="mobileOpen = false"
+        />
         <AltSidebar
           class="relative z-50 h-full"
           :items="items"
@@ -33,7 +63,15 @@
           :link-component="linkComponent"
           @navigate="onMobileNavigate"
         >
-          <template v-if="$slots['sidebar-icon']" #icon="s"><slot name="sidebar-icon" v-bind="s" /></template>
+          <template
+            v-if="$slots['sidebar-icon']"
+            #icon="s"
+          >
+            <slot
+              name="sidebar-icon"
+              v-bind="s"
+            />
+          </template>
         </AltSidebar>
       </div>
     </transition>
@@ -45,8 +83,15 @@
         :show-menu-button="true"
         @toggle-sidebar="onToggle"
       >
-        <template v-if="$slots['topbar-title']" #title><slot name="topbar-title" /></template>
-        <template #actions><slot name="topbar-actions" /></template>
+        <template
+          v-if="$slots['topbar-title']"
+          #title
+        >
+          <slot name="topbar-title" />
+        </template>
+        <template #actions>
+          <slot name="topbar-actions" />
+        </template>
       </AltTopbar>
 
       <main class="flex-1 overflow-y-auto">
@@ -65,7 +110,7 @@ import { ref } from "vue";
 import AltSidebar from "./AltSidebar.vue";
 import AltTopbar from "./AltTopbar.vue";
 
-const props = defineProps({
+defineProps({
   items: { type: Array, default: () => [] },
   title: { type: String, default: "Altonéo" },
   /** Marque du logo de la sidebar : 'altoneo' | 'its'. */

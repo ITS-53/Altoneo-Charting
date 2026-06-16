@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div class="border-b border-gray-200 dark:border-alt-dark-border" role="tablist">
-      <nav class="-mb-px flex gap-1" :class="{ 'gap-6': underline }">
+    <div
+      class="border-b border-gray-200 dark:border-alt-dark-border"
+      role="tablist"
+    >
+      <nav
+        class="-mb-px flex gap-1"
+        :class="{ 'gap-6': underline }"
+      >
         <button
           v-for="tab in normalizedTabs"
           :key="tab.value"

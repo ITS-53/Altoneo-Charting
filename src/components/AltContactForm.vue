@@ -1,33 +1,88 @@
 <template>
-  <form class="space-y-4" novalidate @submit="onSubmit">
-    <AltAlert v-if="success" variant="success" :message="successMessage" />
-    <AltAlert v-if="error" variant="error" :message="error" />
+  <form
+    class="space-y-4"
+    novalidate
+    @submit="onSubmit"
+  >
+    <AltAlert
+      v-if="success"
+      variant="success"
+      :message="successMessage"
+    />
+    <AltAlert
+      v-if="error"
+      variant="error"
+      :message="error"
+    />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <AltFormField label="Nom complet" required :error="form.touched.name ? form.errors.name : ''">
-        <AltInput v-model="form.values.name" autocomplete="name" :state="fieldState('name')" @blur="form.handleBlur('name')" />
+      <AltFormField
+        label="Nom complet"
+        required
+        :error="form.touched.name ? form.errors.name : ''"
+      >
+        <AltInput
+          v-model="form.values.name"
+          autocomplete="name"
+          :state="fieldState('name')"
+          @blur="form.handleBlur('name')"
+        />
       </AltFormField>
-      <AltFormField label="Adresse e-mail" required :error="form.touched.email ? form.errors.email : ''">
-        <AltInput v-model="form.values.email" type="email" autocomplete="email" :state="fieldState('email')" @blur="form.handleBlur('email')" />
+      <AltFormField
+        label="Adresse e-mail"
+        required
+        :error="form.touched.email ? form.errors.email : ''"
+      >
+        <AltInput
+          v-model="form.values.email"
+          type="email"
+          autocomplete="email"
+          :state="fieldState('email')"
+          @blur="form.handleBlur('email')"
+        />
       </AltFormField>
     </div>
 
-    <AltFormField v-if="showSubject" label="Sujet" required :error="form.touched.subject ? form.errors.subject : ''">
-      <AltInput v-model="form.values.subject" :state="fieldState('subject')" @blur="form.handleBlur('subject')" />
+    <AltFormField
+      v-if="showSubject"
+      label="Sujet"
+      required
+      :error="form.touched.subject ? form.errors.subject : ''"
+    >
+      <AltInput
+        v-model="form.values.subject"
+        :state="fieldState('subject')"
+        @blur="form.handleBlur('subject')"
+      />
     </AltFormField>
 
-    <AltFormField label="Message" required :error="form.touched.message ? form.errors.message : ''">
-      <AltTextarea v-model="form.values.message" :rows="5" placeholder="Votre message…" :state="fieldState('message')" @blur="form.handleBlur('message')" />
+    <AltFormField
+      label="Message"
+      required
+      :error="form.touched.message ? form.errors.message : ''"
+    >
+      <AltTextarea
+        v-model="form.values.message"
+        :rows="5"
+        placeholder="Votre message…"
+        :state="fieldState('message')"
+        @blur="form.handleBlur('message')"
+      />
     </AltFormField>
 
     <div class="flex justify-end">
-      <AltButton type="submit" variant="primary" :loading="loading">{{ submitLabel }}</AltButton>
+      <AltButton
+        type="submit"
+        variant="primary"
+        :loading="loading"
+      >
+        {{ submitLabel }}
+      </AltButton>
     </div>
   </form>
 </template>
 
 <script setup>
-import { computed } from "vue";
 import AltFormField from "./AltFormField.vue";
 import AltInput from "./AltInput.vue";
 import AltTextarea from "./AltTextarea.vue";

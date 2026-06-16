@@ -1,6 +1,13 @@
 <template>
-  <nav v-if="totalPages > 1" class="flex items-center justify-between gap-4" aria-label="Pagination">
-    <p v-if="showTotal" class="text-sm text-gray-500 dark:text-alt-dark-muted">
+  <nav
+    v-if="totalPages > 1"
+    class="flex items-center justify-between gap-4"
+    aria-label="Pagination"
+  >
+    <p
+      v-if="showTotal"
+      class="text-sm text-gray-500 dark:text-alt-dark-muted"
+    >
       {{ rangeStart }}–{{ rangeEnd }} sur {{ total }}
     </p>
 
@@ -17,8 +24,14 @@
         </button>
       </li>
 
-      <li v-for="(page, i) in pages" :key="i">
-        <span v-if="page === '…'" class="px-2 text-gray-400">…</span>
+      <li
+        v-for="(page, i) in pages"
+        :key="i"
+      >
+        <span
+          v-if="page === '…'"
+          class="px-2 text-gray-400"
+        >…</span>
         <button
           v-else
           type="button"

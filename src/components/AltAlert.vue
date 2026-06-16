@@ -7,15 +7,32 @@
   >
     <div class="shrink-0 mt-0.5">
       <slot name="icon">
-        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path :d="iconPath" fill-rule="evenodd" clip-rule="evenodd" />
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            :d="iconPath"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+          />
         </svg>
       </slot>
     </div>
 
     <div class="flex-1 min-w-0">
-      <p v-if="title" class="font-semibold">{{ title }}</p>
-      <div class="text-sm" :class="{ 'mt-0.5': title }">
+      <p
+        v-if="title"
+        class="font-semibold"
+      >
+        {{ title }}
+      </p>
+      <div
+        class="text-sm"
+        :class="{ 'mt-0.5': title }"
+      >
         <slot>{{ message }}</slot>
       </div>
     </div>
@@ -27,8 +44,18 @@
       aria-label="Fermer"
       @click="close"
     >
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg
+        class="w-4 h-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
       </svg>
     </button>
   </div>

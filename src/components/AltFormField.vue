@@ -1,16 +1,36 @@
 <template>
   <div :class="{ 'opacity-60': disabled }">
-    <label v-if="label" :for="fieldId" class="block text-sm font-semibold text-altoneo-800 dark:text-altoneo-50 mb-1">
+    <label
+      v-if="label"
+      :for="fieldId"
+      class="block text-sm font-semibold text-altoneo-800 dark:text-altoneo-50 mb-1"
+    >
       {{ label }}
-      <span v-if="required" class="text-red-500" aria-hidden="true">*</span>
+      <span
+        v-if="required"
+        class="text-red-500"
+        aria-hidden="true"
+      >*</span>
     </label>
 
-    <slot :id="fieldId" :has-error="!!error" :described-by="describedBy" />
+    <slot
+      :id="fieldId"
+      :has-error="!!error"
+      :described-by="describedBy"
+    />
 
-    <p v-if="error" :id="`${fieldId}-error`" class="mt-1 text-sm text-red-600 dark:text-red-400">
+    <p
+      v-if="error"
+      :id="`${fieldId}-error`"
+      class="mt-1 text-sm text-red-600 dark:text-red-400"
+    >
       {{ error }}
     </p>
-    <p v-else-if="hint" :id="`${fieldId}-hint`" class="mt-1 text-sm text-gray-500 dark:text-alt-dark-muted">
+    <p
+      v-else-if="hint"
+      :id="`${fieldId}-hint`"
+      class="mt-1 text-sm text-gray-500 dark:text-alt-dark-muted"
+    >
       {{ hint }}
     </p>
   </div>

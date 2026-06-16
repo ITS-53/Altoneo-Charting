@@ -8,13 +8,28 @@
       aria-label="Menu"
       @click="$emit('toggle-sidebar')"
     >
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg
+        class="w-5 h-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      /></svg>
     </button>
 
     <!-- Titre / fil d'ariane -->
     <div class="min-w-0 flex-1">
       <slot name="title">
-        <h1 v-if="title" class="text-lg font-semibold text-altoneo-800 dark:text-altoneo-50 truncate">{{ title }}</h1>
+        <h1
+          v-if="title"
+          class="text-lg font-semibold text-altoneo-800 dark:text-altoneo-50 truncate"
+        >
+          {{ title }}
+        </h1>
       </slot>
     </div>
 

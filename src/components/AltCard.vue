@@ -13,8 +13,15 @@
       :class="paddingClass"
     >
       <slot name="header">
-        <h3 class="font-semibold text-altoneo-800 dark:text-altoneo-50">{{ title }}</h3>
-        <p v-if="subtitle" class="text-sm text-gray-500 dark:text-alt-dark-muted mt-0.5">{{ subtitle }}</p>
+        <h3 class="font-semibold text-altoneo-800 dark:text-altoneo-50">
+          {{ title }}
+        </h3>
+        <p
+          v-if="subtitle"
+          class="text-sm text-gray-500 dark:text-alt-dark-muted mt-0.5"
+        >
+          {{ subtitle }}
+        </p>
       </slot>
     </div>
 
