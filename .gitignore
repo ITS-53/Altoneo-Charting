@@ -144,6 +144,6 @@ vite.config.ts.timestamp-*
 # Build outputs
 storybook-static/
 # Sorties du build Vite en mode librairie (la CSS autonome dist/altoneo.css est conservée)
-dist/altoneo-charting.*.js
+dist/altoneo-charting.*
 # Rapports HTML générés par les exemples PowerShell (les sources .ps1/.psm1 restent suivies)
 powershell/**/*.html

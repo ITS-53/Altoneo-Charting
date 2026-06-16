@@ -11,6 +11,11 @@ export default defineConfig({
     },
   },
   build: {
+    // NE PAS vider dist/ : il contient `altoneo.css`, une CSS autonome
+    // maintenue à la main (variante HTML/CSS sans dépendance, cf. README) qui
+    // n'est PAS produite par ce build. Avec emptyOutDir par défaut, `vite build`
+    // l'effacerait. Les artefacts de ce build (altoneo-charting.*) sont gitignorés.
+    emptyOutDir: false,
     lib: {
       entry: fileURLToPath(new URL("./src/index.js", import.meta.url)),
       name: "AltoneoCharting",
