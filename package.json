@@ -41,21 +41,21 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-a11y": "^10.4.6",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/blocks": "^8.6.14",
-    "@storybook/vue3": "^8.6.14",
-    "@storybook/vue3-vite": "^8.6.14",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@storybook/vue3": "^10.4.6",
+    "@storybook/vue3-vite": "^10.4.6",
+    "@vitejs/plugin-vue": "^6.0.7",
     "autoprefixer": "^10.4.20",
     "eslint": "^10.5.0",
     "eslint-plugin-vue": "^10.9.2",
-    "globals": "^17.6.0",
+    "globals": "^17.7.0",
     "postcss": "^8.5.1",
-    "storybook": "^8.6.14",
-    "tailwindcss": "^3.4.17",
-    "vite": "^6.0.11",
-    "vue": "^3.5.13"
+    "storybook": "^10.4.6",
+    "tailwindcss": "^4.3.1",
+    "vite": "^8.0.16",
+    "vue": "^3.5.38"
   },
   "overrides": {
     "uuid": "^11.1.0"
