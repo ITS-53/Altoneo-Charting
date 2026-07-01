@@ -70,7 +70,7 @@
           v-else
           :key="rowKey ? row[rowKey] : i"
           class="hover:bg-altoneo-50/60 dark:hover:bg-alt-dark-raised/60 transition-colors"
-          :class="{ 'cursor-pointer': clickable }"
+          :class="[{ 'cursor-pointer': clickable }, resolveRowClass(row)]"
           @click="clickable && $emit('row-click', row)"
         >
           <td
@@ -105,9 +105,18 @@ const props = defineProps({
   loading: { type: Boolean, default: false },
   clickable: { type: Boolean, default: false },
   emptyText: { type: String, default: "Aucune donnée" },
+  /**
+   * Classe(s) CSS appliquée(s) à une ligne. Chaîne fixe, ou fonction (row) =>
+   * string pour styliser conditionnellement (ex. griser une ligne obsolète).
+   */
+  rowClass: { type: [String, Function], default: "" },
 });
 
 defineEmits(["row-click"]);
+
+function resolveRowClass(row) {
+  return typeof props.rowClass === "function" ? props.rowClass(row) : props.rowClass;
+}
 
 const sortKey = ref("");
 const sortDir = ref("asc");
