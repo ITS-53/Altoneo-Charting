@@ -6,6 +6,11 @@ Les messages de commit suivent les [Conventional Commits](https://www.convention
 
 ## Non publié
 
+### Modifications
+
+- Vitest 4.1 → **5.0** (Node 22.12+ ou 24 requis).
+- Dependabot : TypeScript 7 ignoré, incompatible avec vue-tsc (le typecheck reste en TypeScript 6).
+
 ## 0.3.0 — Qualité et CI (2026-10-26)
 
 ### Ajouts
