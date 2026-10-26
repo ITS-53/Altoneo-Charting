@@ -5,7 +5,7 @@ Installez-la dans n'importe quel projet pour réutiliser la charte graphique (co
 jeu de composants prêts à l'emploi : boutons, formulaires validés, cartes, badges, modales, tableaux,
 toasts, etc.
 
-📖 **Documentation interactive** : `npm run storybook`
+📖 **Documentation interactive** : <https://its-53.github.io/Altoneo-Charting/> (ou `npm run storybook` en local)
 
 ---
 
@@ -300,6 +300,12 @@ Toute nouvelle règle de validation ou tout nouveau composant de parcours doit a
 
 Le workflow `.github/workflows/ci.yml` s'exécute à chaque push et à chaque pull request :
 installation (`npm ci`), lint, typecheck, tests, build de la bibliothèque et build Storybook.
+
+Le workflow `.github/workflows/pages.yml` publie le Storybook sur GitHub Pages
+(<https://its-53.github.io/Altoneo-Charting/>) à chaque push sur `main`.
+
+Pour une démo locale sous Windows : `.\demo.ps1` (serveur de dev) ou `.\demo.ps1 -Static`
+(build de production servi en local).
 
 La branche `main` est protégée : passage obligatoire par une pull request, job **ci** vert requis,
 push forcé et suppression interdits. Dependabot ouvre chaque semaine les PR de mise à jour

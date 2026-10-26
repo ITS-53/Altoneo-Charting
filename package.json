@@ -1,6 +1,6 @@
 {
   "name": "altoneo-charting",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Bibliothèque de composants Vue 3 + TailwindCSS portant l'identité visuelle Altonéo",
   "type": "module",
   "license": "MIT",
