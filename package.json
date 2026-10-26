@@ -1,6 +1,6 @@
 {
   "name": "altoneo-charting",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Bibliothèque de composants Vue 3 + TailwindCSS portant l'identité visuelle Altonéo",
   "type": "module",
   "license": "MIT",
@@ -14,6 +14,9 @@
     ".": "./src/index.js",
     "./tailwind-preset": "./tailwind-preset.cjs",
     "./style.css": "./src/style.css",
+    "./next.css": "./src/next.css",
+    "./icons": "./src/icons/registry.js",
+    "./icons/svg/*": "./src/icons/svg/*",
     "./css": "./dist/altoneo.css",
     "./tokens": "./src/tokens/colors.js",
     "./assets/*": "./src/assets/*"
@@ -33,7 +36,8 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "vite build"
+    "build": "vite build",
+    "icons": "node scripts/build-icons.mjs"
   },
   "peerDependencies": {
     "tailwindcss": "^3.4.0",

@@ -52,4 +52,31 @@ export const chartPalette = [
   altoneo[700], // navy intermédiaire
 ];
 
-export default { altoneo, brand, semantic, chartPalette };
+/** Altonéo Next — néons (valeurs du thème sombre ; next.css fournit leurs variantes claires). */
+export const neon = {
+  cyan: "#38e1ff",
+  mint: "#2ee6a6",
+  rose: "#ff3d71",
+  violet: "#9b7bff",
+  goldGlow: "#ffd27a",
+  azureBright: "#5b8cff",
+};
+
+/** Sévérités / statuts : toujours accompagnées d'un libellé et d'une icône, jamais la couleur seule. */
+export const severity = {
+  critical: "#ff3d71",
+  high: "#ff8a1f",
+  medium: "#ffd84d",
+  low: "#5b8cff",
+  info: "#94a3b8",
+};
+
+/** Surfaces du thème sombre premium, de la plus profonde à la plus élevée. */
+export const ink = {
+  950: "#060a18",
+  900: "#0b1226",
+  800: "#131c36",
+  700: "#1c284d",
+};
+
+export default { altoneo, brand, semantic, chartPalette, neon, severity, ink };

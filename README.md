@@ -88,6 +88,34 @@ import { AltButton, AltModal, useForm, email } from "altoneo-charting";
 
 ---
 
+## Altonéo Next (v0.2) — verre, lueurs, animations, icônes
+
+Le vocabulaire visuel d'Aud'IT, ajouté à la charte **sans rien changer à l'existant** (tout est préfixé `alt-`).
+Détail dans le [CHANGELOG](CHANGELOG.md) et la section « Altonéo Next » de Storybook.
+
+```js
+// main.js
+import AltoneoUI from "altoneo-charting";
+import "altoneo-charting/next.css"; // jetons, surfaces, effets, animations
+app.use(AltoneoUI); // composants + directives v-alt-*
+```
+
+```vue
+<AltGlassCard eyebrow="Parc" title="Note globale" shine>
+  <AltScoreRing :value="86" />
+</AltGlassCard>
+<AltButton variant="neon" magnetic>Lancer</AltButton>
+<AltIcon name="spark" :size="20" />
+<div v-alt-reveal="2" v-alt-tip="'Infobulle'">…</div>
+```
+
+- **Polices** recommandées : `npm i @fontsource/inter @fontsource/space-grotesk @fontsource/jetbrains-mono`
+  (sinon repli sur les polices système).
+- **Thème sombre** : classe `.dark` sur `<html>` ; **contraste élevé** : `data-alt-contrast="high"`.
+- **Animations** : `useMotion().setMotion("cinema" | "sober" | "none")`.
+- **Icônes** : `import { ICONS, iconSvg } from "altoneo-charting/icons"` ; fichiers SVG dans
+  `altoneo-charting/icons/svg/<nom>.svg` (régénérés par `npm run icons`).
+
 ## Composants
 
 | Composant                                             | Rôle                                                                                         |

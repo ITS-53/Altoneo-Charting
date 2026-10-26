@@ -1,6 +1,7 @@
 <template>
   <component
     :is="tag"
+    v-magnet="magnetic"
     :type="isNativeButton ? type : undefined"
     :href="href"
     :disabled="isNativeButton ? disabled || loading : undefined"
@@ -26,10 +27,19 @@
 <script setup>
 import { computed } from "vue";
 import AltSpinner from "./AltSpinner.vue";
+import { vAltMagnetic } from "../directives/index.js";
+
+// Comportement magnétique posé seulement à la demande (prop `magnetic`).
+const vMagnet = {
+  mounted: (el, b) => b.value && vAltMagnetic.mounted(el, { value: undefined }),
+  unmounted: (el) => vAltMagnetic.unmounted(el),
+};
 
 const props = defineProps({
-  /** primary | secondary | danger | ghost | navy */
+  /** primary | secondary | danger | ghost | navy | neon (Altonéo Next, nécessite next.css) */
   variant: { type: String, default: "primary" },
+  /** Attiré par le pointeur, retour élastique (mode cinéma). */
+  magnetic: { type: Boolean, default: false },
   /** xs | sm | md | lg */
   size: { type: String, default: "md" },
   /** Rendu en <button> par défaut ; passez `href` pour un <a>. */
@@ -56,6 +66,8 @@ const variantClass = computed(
       navy: "bg-altoneo-800 text-white hover:bg-altoneo-900 active:bg-altoneo-900 dark:bg-alt-dark-raised dark:hover:bg-altoneo-700",
       danger: "bg-red-600 text-white hover:bg-red-700 active:bg-red-800",
       ghost: "bg-transparent text-altoneo-800 hover:bg-altoneo-50 dark:text-altoneo-50 dark:hover:bg-alt-dark-raised",
+      // Altonéo Next (next.css) : dégradé or, lueur, réaction à l'appui.
+      neon: "alt-neon-skin rounded-xl",
     })[props.variant] || "",
 );
 
