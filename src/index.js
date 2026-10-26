@@ -46,6 +46,15 @@ import AltToast from "./components/AltToast.vue";
 import AltToastContainer from "./components/AltToastContainer.vue";
 import AltTooltip from "./components/AltTooltip.vue";
 import AltTopbar from "./components/AltTopbar.vue";
+// Altonéo Next (v0.2) — nécessite 'altoneo-charting/next.css'
+import AltAurora from "./components/AltAurora.vue";
+import AltDrawer from "./components/AltDrawer.vue";
+import AltGlassCard from "./components/AltGlassCard.vue";
+import AltIcon from "./components/AltIcon.vue";
+import AltPopover from "./components/AltPopover.vue";
+import AltScoreRing from "./components/AltScoreRing.vue";
+import AltSegmented from "./components/AltSegmented.vue";
+import AltSparkline from "./components/AltSparkline.vue";
 
 export const components = {
   AltAlert,
@@ -87,7 +96,17 @@ export const components = {
   AltToastContainer,
   AltTooltip,
   AltTopbar,
+  AltAurora,
+  AltDrawer,
+  AltGlassCard,
+  AltIcon,
+  AltPopover,
+  AltScoreRing,
+  AltSegmented,
+  AltSparkline,
 };
+
+import { directives } from "./directives/index.js";
 
 // Plugin Vue
 const AltoneoUI = {
@@ -95,6 +114,8 @@ const AltoneoUI = {
     for (const [name, component] of Object.entries(components)) {
       app.component(name, component);
     }
+    // Directives Altonéo Next : v-alt-spotlight, v-alt-magnetic, v-alt-tip, v-alt-reveal.
+    for (const [name, directive] of Object.entries(directives)) app.directive(name, directive);
   },
 };
 
@@ -141,6 +162,14 @@ export {
   AltToastContainer,
   AltTooltip,
   AltTopbar,
+  AltAurora,
+  AltDrawer,
+  AltGlassCard,
+  AltIcon,
+  AltPopover,
+  AltScoreRing,
+  AltSegmented,
+  AltSparkline,
 };
 
 // Composables
@@ -165,3 +194,10 @@ export {
 
 // Tokens
 export { altoneo, brand, semantic, chartPalette } from "./tokens/colors.js";
+
+// Altonéo Next : mouvement, directives, icônes
+export { useMotion, setMotion, motionScale, isCinema } from "./composables/useMotion.js";
+export { useCountUp } from "./composables/useCountUp.js";
+export { directives, vAltSpotlight, vAltMagnetic, vAltTip, vAltReveal } from "./directives/index.js";
+export { ICONS, ICON_NAMES, ICON_CATEGORIES, iconSvg } from "./icons/registry.js";
+export { neon, severity, ink } from "./tokens/colors.js";

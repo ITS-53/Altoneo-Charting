@@ -17,8 +17,12 @@
  *  - les couleurs sémantiques nommées de la charte (space-indigo, sunflower-gold…),
  *  - des alias d'intention (primary / accent / navy / success / warning / danger / info),
  *  - un plugin `addComponents` fournissant .btn-*, .input, .label, .card, .badge-*
- *    pour les pages qui n'utilisent pas les composants Vue.
+ *    pour les pages qui n'utilisent pas les composants Vue,
+ *  - Altonéo Next (v0.2) : `ink`, `fg`, `line`, `neon`, `sev` branchés sur les variables de
+ *    next.css (bascule clair / sombre automatique), polices display et mono, lueurs, courbes.
  */
+/** Couleur pilotée par une variable CSS de next.css, avec l'opacité Tailwind (bg-neon-cyan/20…). */
+const v = (name) => `rgb(var(--alt-${name}) / <alpha-value>)`;
 const plugin = require("tailwindcss/plugin");
 
 /** Échelle de marque — issue du tailwind.config.js de référence (controle-independance). */
@@ -68,6 +72,21 @@ module.exports = {
           muted: "#94a3b8", // slate-400 (texte secondaire)
           link: "#8fb0e8", // bleu éclairci (liens/focus)
         },
+        // Altonéo Next — suivent le thème via next.css
+        ink: { 950: v("ink-950"), 900: v("ink-900"), 800: v("ink-800"), 700: v("ink-700") },
+        fg: { DEFAULT: v("fg"), muted: v("fg-muted"), faint: v("fg-faint") },
+        line: v("line"),
+        gold: { DEFAULT: v("gold"), glow: v("gold-glow") },
+        tangerine: v("tangerine"),
+        azure: { DEFAULT: v("azure"), bright: v("azure-bright") },
+        neon: { cyan: v("neon-cyan"), mint: v("neon-mint"), rose: v("neon-rose"), violet: v("neon-violet") },
+        sev: {
+          critical: v("sev-critical"),
+          high: v("sev-high"),
+          medium: v("sev-medium"),
+          low: v("sev-low"),
+          info: v("sev-info"),
+        },
         // Alias d'intention sémantique
         primary: altoneo[200], // CTA orange
         accent: altoneo[300], // orange hover / accent
@@ -89,15 +108,39 @@ module.exports = {
           "Arial",
           "sans-serif",
         ],
+        display: ['"Space Grotesk"', "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "SFMono-Regular", "Consolas", "monospace"],
       },
       boxShadow: {
         "altoneo-card": "0 1px 2px 0 rgb(28 40 77 / 0.05)",
         "altoneo-pop": "0 10px 25px -5px rgb(28 40 77 / 0.15)",
+        "glow-gold": "0 0 0 1px rgb(249 178 51 / 0.4), 0 8px 30px -8px rgb(249 178 51 / 0.7)",
+        "glow-cyan": "0 0 0 1px rgb(56 225 255 / 0.3), 0 0 28px -6px rgb(56 225 255 / 0.55)",
+        glass: "inset 0 1px 0 0 rgb(255 255 255 / 0.06), 0 20px 50px -20px rgb(0 0 0 / 0.55)",
       },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.22, 1, 0.36, 1)",
+        spring: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      },
+      backdropBlur: { glass: "18px" },
       borderRadius: {
         altoneo: "0.625rem",
+        "4xl": "2rem",
       },
       keyframes: {
+        // Altonéo Next (dupliquées dans next.css pour les pages sans Tailwind)
+        "alt-pop-in": {
+          from: { opacity: "0", transform: "translateY(-6px) scale(0.97)", filter: "blur(4px)" },
+          to: { opacity: "1", transform: "none", filter: "none" },
+        },
+        "alt-pulse-ring": {
+          "0%": { boxShadow: "0 0 0 0 rgb(46 230 166 / 0.55)" },
+          "100%": { boxShadow: "0 0 0 10px rgb(46 230 166 / 0)" },
+        },
+        "alt-float": {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "50%": { transform: "translate3d(6%, -6%, 0) scale(1.08)" },
+        },
         "altoneo-fade-in": {
           from: { opacity: "0", transform: "translateY(4px)" },
           to: { opacity: "1", transform: "translateY(0)" },
@@ -110,6 +153,9 @@ module.exports = {
       animation: {
         "altoneo-fade-in": "altoneo-fade-in 0.15s ease-out",
         "altoneo-toast-in": "altoneo-toast-in 0.2s ease-out",
+        "alt-pop-in": "alt-pop-in 0.22s cubic-bezier(0.22, 1, 0.36, 1)",
+        "alt-pulse": "alt-pulse-ring 1.8s ease-out infinite",
+        "alt-float": "alt-float 20s ease-in-out infinite",
       },
     },
   },
