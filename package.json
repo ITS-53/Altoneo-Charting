@@ -37,7 +37,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "vite build",
-    "icons": "node scripts/build-icons.mjs"
+    "icons": "node scripts/build-icons.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "typecheck": "vue-tsc --noEmit -p jsconfig.json"
   },
   "peerDependencies": {
     "tailwindcss": "^3.4.0",
@@ -45,23 +49,35 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@storybook/addon-a11y": "^8.6.14",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/blocks": "^8.6.14",
-    "@storybook/vue3": "^8.6.14",
-    "@storybook/vue3-vite": "^8.6.14",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "autoprefixer": "^10.4.20",
+    "@storybook/addon-a11y": "^10.6.4",
+    "@storybook/addon-docs": "^10.6.4",
+    "@storybook/vue3": "^10.6.4",
+    "@storybook/vue3-vite": "^10.6.4",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.5.4",
     "eslint": "^10.5.0",
     "eslint-plugin-vue": "^10.9.2",
     "globals": "^17.6.0",
-    "postcss": "^8.5.1",
-    "storybook": "^8.6.14",
+    "happy-dom": "^21.0.4",
+    "postcss": "^8.5.31",
+    "storybook": "^10.6.4",
     "tailwindcss": "^3.4.17",
-    "vite": "^6.0.11",
-    "vue": "^3.5.13"
+    "typescript": "~6.0.3",
+    "vite": "^8.3.5",
+    "vitest": "^4.1.12",
+    "vue": "3.6.0-rc.13",
+    "vue-tsc": "^3.3.13"
   },
   "overrides": {
-    "uuid": "^11.1.0"
+    "vue": "$vue",
+    "@vue/server-renderer": "$vue",
+    "nanoid": "^5.1.6",
+    "brace-expansion": "^5.0.9",
+    "source-map-js": "^1.2.2",
+    "browserslist": "^4.28.7",
+    "baseline-browser-mapping": "^2.11.0",
+    "postcss-selector-parser": "^7.1.6",
+    "postcss": "$postcss"
   }
 }

@@ -1,5 +1,32 @@
 # Journal des versions
 
+Toutes les évolutions notables sont consignées ici. Format inspiré de
+[Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; versionnage [sémantique](https://semver.org/lang/fr/).
+Les messages de commit suivent les [Conventional Commits](https://www.conventionalcommits.org/fr/).
+
+## Non publié
+
+### Ajouts
+
+- Tests **Vitest** + `@vue/test-utils` (happy-dom) : règles de validation, `useForm`, `useMotion`,
+  plugin et icônes ; parcours connexion, inscription et toasts (`npm test`).
+- Script `npm run typecheck` (vue-tsc) et `npm run lint`.
+- Workflow GitHub Actions `ci.yml` : installation, lint, typecheck, tests, build et build Storybook
+  à chaque push et pull request.
+- README : prérequis, scripts, tests, CI, contribution, versions, licence.
+
+### Modifications
+
+- Storybook 8.6 → **10.6** (`@storybook/addon-essentials` intégré au cœur, `@storybook/blocks` remplacé
+  par `@storybook/addon-docs`) ; `@storybook/core` n'est plus une dépendance.
+- Vite 6 → **8.3**, `@vitejs/plugin-vue` 5 → 6, PostCSS 8.5.31, autoprefixer 10.5.
+- `vue` (dépendance de développement) → **3.6.0-rc.13** pour `@vue/server-renderer` ≥ 3.6.0-rc.6 ;
+  la `peerDependency` reste `^3.4.0`.
+- Dépendances transitives forcées (`overrides`) : nanoid ≥ 5.1.6, brace-expansion ≥ 5.0.9,
+  source-map-js ≥ 1.2.2, browserslist ≥ 4.28.7, baseline-browser-mapping ≥ 2.11.0,
+  postcss-selector-parser ≥ 7.1.6. `npm audit` : 0 vulnérabilité.
+- ESLint : environnement Node pour `scripts/`, navigateur pour `.storybook/preview.js`.
+
 ## 0.2.0 — Altonéo Next (2026-10-26)
 
 Couche « premium » issue d'Aud'IT : verre dépoli, lueurs, animations, icônes. **Additive** :

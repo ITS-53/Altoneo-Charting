@@ -261,12 +261,63 @@ Exemple complet exécutable : [`powershell/Example-Report.ps1`](powershell/Examp
 
 ## Développement de la bibliothèque
 
+### Prérequis
+
+- **Node.js 24** (version de référence dans `.nvmrc`, utilisée par la CI ; Node 22.12+ fonctionne aussi).
+- npm 10+.
+
+### Scripts
+
 ```bash
 npm install
 npm run storybook        # documentation interactive sur http://localhost:6006
 npm run build-storybook  # build statique (storybook-static/)
+npm run lint             # ESLint (règles Vue + qualité)
+npm run typecheck        # vue-tsc : templates .vue et imports
+npm test                 # tests Vitest (une passe)
+npm run test:watch       # tests Vitest en continu
+npm run build            # build Vite en mode librairie (dist/altoneo-charting.*)
+npm run icons            # exporte les icônes internes en .svg (src/icons/svg)
 ```
 
 La charte est centralisée dans `tailwind-preset.cjs` (échelle `altoneo`, couleurs nommées, classes
 `.btn-*`, `.input`, `.card`, `.badge-*`). Les composants vivent dans `src/components`, les composables
 dans `src/composables`, les tokens JS dans `src/tokens`.
+
+> `dist/altoneo.css` est maintenue à la main (variante HTML/CSS pure) : `npm run build` ne la touche pas.
+
+### Tests
+
+Les tests vivent dans `tests/` et tournent avec **Vitest** + **@vue/test-utils** (DOM simulé par happy-dom) :
+
+- `tests/unit` — règles métier critiques : règles de validation (`required`, `email`, `phoneFr`,
+  `sameAs`…), état de formulaire `useForm`, niveaux d'animation `useMotion`, plugin et icônes ;
+- `tests/components` — parcours clés : connexion, inscription, notifications (toasts).
+
+Toute nouvelle règle de validation ou tout nouveau composant de parcours doit arriver avec ses tests.
+
+### Intégration continue
+
+Le workflow `.github/workflows/ci.yml` s'exécute à chaque push et à chaque pull request :
+installation (`npm ci`), lint, typecheck, tests, build de la bibliothèque et build Storybook.
+
+La branche `main` est protégée : passage obligatoire par une pull request, job **ci** vert requis,
+push forcé et suppression interdits. Dependabot ouvre chaque semaine les PR de mise à jour
+(npm et GitHub Actions).
+
+### Contribuer
+
+1. Créer une branche depuis `main` (`feat/…`, `fix/…`, `chore/…`).
+2. Écrire des messages de commit au format [Conventional Commits](https://www.conventionalcommits.org/fr/)
+   (`feat(table): …`, `fix(build): …`, `chore(deps): …`).
+3. Ouvrir une pull request ; elle est fusionnable une fois la CI verte.
+4. Ajouter une entrée dans la section « Non publié » du [CHANGELOG](CHANGELOG.md).
+
+### Versions
+
+Le projet suit le [versionnage sémantique](https://semver.org/lang/fr/). L'historique est tenu dans le
+[CHANGELOG](CHANGELOG.md) (format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/)).
+
+## Licence
+
+[MIT](LICENSE).

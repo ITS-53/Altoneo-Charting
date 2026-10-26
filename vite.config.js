@@ -10,6 +10,14 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  // Tests Vitest : règles métier (tests/unit) et parcours composants (tests/components).
+  test: {
+    environment: "happy-dom",
+    include: ["tests/**/*.test.js"],
+    // Node ≥ 25 expose un localStorage natif (inutilisable sans --localstorage-file)
+    // qui masque celui de happy-dom : on le désactive dans les workers de test.
+    execArgv: Number(process.versions.node.split(".")[0]) >= 25 ? ["--no-experimental-webstorage"] : [],
+  },
   build: {
     // NE PAS vider dist/ : il contient `altoneo.css`, une CSS autonome
     // maintenue à la main (variante HTML/CSS sans dépendance, cf. README) qui
