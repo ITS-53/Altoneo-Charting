@@ -13,6 +13,11 @@ updates:
       # la v4 change le modèle de configuration, migration à mener à part.
       - dependency-name: "tailwindcss"
         update-types: ["version-update:semver-major"]
+      # vue-tsc (typecheck) s'appuie sur l'API JS de TypeScript (typescript/lib/tsc),
+      # absente de TypeScript 7 (compilateur natif) : rester en v6 tant que vue-tsc
+      # ne prend pas en charge la v7.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       dev-dependencies:
         patterns:
