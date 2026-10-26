@@ -6,8 +6,13 @@ Les messages de commit suivent les [Conventional Commits](https://www.convention
 
 ## Non publié
 
+## 0.3.0 — Qualité et CI (2026-10-26)
+
 ### Ajouts
 
+- Storybook publié sur GitHub Pages (<https://its-53.github.io/Altoneo-Charting/>) par le workflow
+  `pages.yml` à chaque push sur `main`.
+- `demo.ps1` : démo Storybook locale (dev ou statique) sous Windows.
 - Tests **Vitest** + `@vue/test-utils` (happy-dom) : règles de validation, `useForm`, `useMotion`,
   plugin et icônes ; parcours connexion, inscription et toasts (`npm test`).
 - Script `npm run typecheck` (vue-tsc) et `npm run lint`.
