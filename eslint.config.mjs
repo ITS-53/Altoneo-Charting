@@ -38,12 +38,30 @@ export default [
 
   // Fichiers de configuration en modules ES (Node).
   {
-    files: ['*.config.js', '.storybook/**/*.js', 'eslint.config.mjs'],
+    files: ['*.config.js', '.storybook/**/*.js', 'scripts/**/*.mjs', 'eslint.config.mjs'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: { ...globals.node },
     },
+  },
+
+  // Prévisualisation Storybook : exécutée dans le navigateur.
+  {
+    files: ['.storybook/preview.js'],
+    languageOptions: { globals: { ...globals.browser } },
+  },
+
+  // Tests Vitest (environnement DOM simulé par happy-dom).
+  {
+    files: ['tests/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: { ...globals.browser, ...globals.node },
+    },
+    // Les tests déclarent de petits composants d'appoint à côté des cas.
+    rules: { 'vue/one-component-per-file': 'off' },
   },
 
   // Preset Tailwind partagé : volontairement en CommonJS (.cjs) pour rester
