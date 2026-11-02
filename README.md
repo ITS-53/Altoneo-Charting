@@ -7,6 +7,9 @@ toasts, etc.
 
 📖 **Documentation interactive** : <https://its-53.github.io/Altoneo-Charting/> (ou `npm run storybook` en local)
 
+🎨 **Présentation de la charte** : [docs/charte-graphique.html](docs/charte-graphique.html) — couleurs, typographie,
+surfaces, animations, transitions et composants en démonstration (page autonome, à ouvrir dans un navigateur).
+
 ---
 
 ## Installation dans un autre projet
