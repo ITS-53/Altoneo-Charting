@@ -1,5 +1,5 @@
 /**
- * Feuille de style de base — pour le DEV et STORYBOOK uniquement.
+ * Feuille de style de base — pour le DEV et le PLAYGROUND uniquement.
  *
  * Un projet consommateur n'a PAS besoin d'importer ce fichier : il génère ses
  * propres utilitaires Tailwind à partir du preset. Les composants `.vue`

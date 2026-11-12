@@ -1,6 +1,6 @@
 version: 2
 updates:
-  # Dépendances npm (devDeps : Vite, Storybook, ESLint…) + dépendances transitives
+  # Dépendances npm (devDeps : Vite, Vitest, ESLint…) + dépendances transitives
   # vulnérables (esbuild, uuid) — Dependabot ouvrira des PR quand des versions
   # corrigées compatibles seront disponibles.
   - package-ecosystem: "npm"

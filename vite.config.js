@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { fileURLToPath, URL } from "node:url";
 
-// Config Vite — utilisée par Storybook et pour un éventuel build en mode librairie.
+// Config Vite — build de la bibliothèque et tests Vitest (le playground a sa propre config : playground/vite.config.js).
 export default defineConfig({
   plugins: [vue()],
   resolve: {

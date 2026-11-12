@@ -6,8 +6,21 @@ Les messages de commit suivent les [Conventional Commits](https://www.convention
 
 ## Non publié
 
+### Ajouts
+
+- **Altonéo Playground** (`playground/`) : documentation interactive maison, aux couleurs d'Altonéo
+  Next, qui remplace Storybook. Lit les fichiers `*.stories.js` existants (CSF) ; canevas isolé avec
+  thème, animations, contraste, fonds et viewports ; panneaux Contrôles, Actions, Code, Accessibilité
+  et API ; pages Documentation par composant (référence d'API tirée des sources `.vue`) ; recherche
+  et raccourcis clavier. Scripts `npm run playground`, `build-playground`, `preview-playground`.
+
 ### Modifications
 
+- Storybook retiré (`storybook`, `@storybook/*` : 5 dépendances directes, ~3 100 lignes de lockfile en
+  moins) ; `.storybook/` et `Introduction.mdx` supprimés (l'introduction devient l'accueil du playground).
+- CI et GitHub Pages construisent et publient le playground (`playground-dist/`).
+- `demo.ps1` lance le playground ; le mode `-Static` sert le build via `vite preview` (le script
+  `serve-storybook-static.mjs` qu'il appelait n'existait pas).
 - Vitest 4.1 → **5.0** (Node 22.12+ ou 24 requis).
 - Dependabot : TypeScript 7 ignoré, incompatible avec vue-tsc (le typecheck reste en TypeScript 6).
 

@@ -1,0 +1,102 @@
+/* Canevas du playground : mise en page des stories et fonds de la barre d'outils. */
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  background: transparent;
+}
+
+.pg-stage {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: rgb(var(--alt-fg));
+  background: #eaf0f7;
+}
+.pg-stage.dark {
+  background: #131c36;
+}
+html[data-pg-embedded="1"] .pg-stage {
+  min-height: 0;
+}
+html[data-pg-embedded="1"] .pg-layout-fullscreen {
+  min-height: 560px;
+}
+
+/* Mises en page (parameters.layout) */
+.pg-layout-padded {
+  padding: 1.5rem;
+}
+.pg-layout-centered {
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+.pg-layout-fullscreen {
+  padding: 0;
+}
+
+/* Fonds */
+html[data-pg-bg="aurora"] .pg-stage {
+  background: rgb(var(--alt-ink-950));
+}
+html[data-pg-bg="grid"] .pg-stage {
+  background-color: rgb(var(--alt-ink-900));
+  background-image:
+    linear-gradient(rgb(var(--alt-line) / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--alt-line) / 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+html[data-pg-bg="transparent"] .pg-stage {
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #e2e8f0 25%, transparent 25%),
+    linear-gradient(-45deg, #e2e8f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e2e8f0 75%),
+    linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+html.dark[data-pg-bg="transparent"] .pg-stage {
+  background-color: #0b1226;
+  background-image:
+    linear-gradient(45deg, #1c284d 25%, transparent 25%),
+    linear-gradient(-45deg, #1c284d 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1c284d 75%),
+    linear-gradient(-45deg, transparent 75%, #1c284d 75%);
+}
+
+/* Contours de mise en page */
+html.pg-outline #canvas * {
+  outline: 1px solid rgb(var(--alt-neon-cyan) / 0.45) !important;
+  outline-offset: -1px;
+}
+
+/* Élément signalé par le panneau Accessibilité */
+.pg-highlight {
+  outline: 3px solid rgb(var(--alt-neon-rose)) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 8px rgb(var(--alt-neon-rose) / 0.2) !important;
+}
+
+.pg-error {
+  margin: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(200 16 46 / 0.4);
+  background: rgb(200 16 46 / 0.08);
+  color: #8a0d22;
+  font: 12px/1.6 "JetBrains Mono", ui-monospace, monospace;
+  white-space: pre-wrap;
+}
+.pg-missing {
+  display: grid;
+  gap: 0.5rem;
+  place-items: center;
+  min-height: 60vh;
+  font-family: Inter, system-ui, sans-serif;
+  color: #475569;
+}
