@@ -1,5 +1,5 @@
 # Intégration continue : installation, lint, typecheck, tests et builds
-# (bibliothèque + Storybook) à chaque push et à chaque pull request.
+# (bibliothèque + playground) à chaque push et à chaque pull request.
 # Le job « ci » est le contrôle requis par la protection de la branche main.
 name: CI
 
@@ -42,5 +42,5 @@ jobs:
       - name: Build bibliothèque
         run: npm run build
 
-      - name: Build Storybook
-        run: npm run build-storybook -- --quiet
+      - name: Build playground
+        run: npm run build-playground

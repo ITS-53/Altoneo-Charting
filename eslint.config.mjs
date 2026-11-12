@@ -16,6 +16,7 @@ export default [
       '**/node_modules/**',
       'dist/**',
       'storybook-static/**',
+      'playground-dist/**',
       'html/**',
       'docs/**',
       'powershell/**',
@@ -28,7 +29,7 @@ export default [
 
   // Composants Vue, composables et point d'entrée (modules ES, navigateur).
   {
-    files: ['src/**/*.{js,vue}', 'stories/**/*.{js,vue}'],
+    files: ['src/**/*.{js,vue}', 'stories/**/*.{js,vue}', 'playground/src/**/*.{js,vue}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -38,18 +39,12 @@ export default [
 
   // Fichiers de configuration en modules ES (Node).
   {
-    files: ['*.config.js', '.storybook/**/*.js', 'scripts/**/*.mjs', 'eslint.config.mjs'],
+    files: ['*.config.js', 'playground/vite.config.js', 'scripts/**/*.mjs', 'eslint.config.mjs'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: { ...globals.node },
     },
-  },
-
-  // Prévisualisation Storybook : exécutée dans le navigateur.
-  {
-    files: ['.storybook/preview.js'],
-    languageOptions: { globals: { ...globals.browser } },
   },
 
   // Tests Vitest (environnement DOM simulé par happy-dom).

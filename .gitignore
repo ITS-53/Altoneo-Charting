@@ -142,6 +142,7 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Build outputs
+playground-dist/
 storybook-static/
 # Sorties du build Vite en mode librairie (la CSS autonome dist/altoneo.css est conservée)
 dist/altoneo-charting.*

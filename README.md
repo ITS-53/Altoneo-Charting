@@ -5,7 +5,7 @@ Installez-la dans n'importe quel projet pour réutiliser la charte graphique (co
 jeu de composants prêts à l'emploi : boutons, formulaires validés, cartes, badges, modales, tableaux,
 toasts, etc.
 
-📖 **Documentation interactive** : <https://its-53.github.io/Altoneo-Charting/> (ou `npm run storybook` en local)
+📖 **Documentation interactive** : <https://its-53.github.io/Altoneo-Charting/> (ou `npm run playground` en local)
 
 🎨 **Présentation de la charte** : [docs/charte-graphique.html](docs/charte-graphique.html) — couleurs, typographie,
 surfaces, animations, transitions et composants en démonstration (page autonome, à ouvrir dans un navigateur).
@@ -94,7 +94,7 @@ import { AltButton, AltModal, useForm, email } from "altoneo-charting";
 ## Altonéo Next (v0.2) — verre, lueurs, animations, icônes
 
 Le vocabulaire visuel d'Aud'IT, ajouté à la charte **sans rien changer à l'existant** (tout est préfixé `alt-`).
-Détail dans le [CHANGELOG](CHANGELOG.md) et la section « Altonéo Next » de Storybook.
+Détail dans le [CHANGELOG](CHANGELOG.md) et la section « Altonéo Next » du playground.
 
 ```js
 // main.js
@@ -273,8 +273,9 @@ Exemple complet exécutable : [`powershell/Example-Report.ps1`](powershell/Examp
 
 ```bash
 npm install
-npm run storybook        # documentation interactive sur http://localhost:6006
-npm run build-storybook  # build statique (storybook-static/)
+npm run playground          # playground (documentation interactive) sur http://localhost:6006
+npm run build-playground    # build statique (playground-dist/)
+npm run preview-playground  # sert le build statique en local
 npm run lint             # ESLint (règles Vue + qualité)
 npm run typecheck        # vue-tsc : templates .vue et imports
 npm test                 # tests Vitest (une passe)
@@ -289,6 +290,29 @@ dans `src/composables`, les tokens JS dans `src/tokens`.
 
 > `dist/altoneo.css` est maintenue à la main (variante HTML/CSS pure) : `npm run build` ne la touche pas.
 
+### Playground (documentation interactive)
+
+Le playground maison (`playground/`) remplace Storybook : une application Vite + Vue construite
+avec nos propres composants Altonéo Next, sans aucune dépendance supplémentaire.
+
+- **Stories au format CSF** : chaque fichier `stories/**/*.stories.js` est découvert automatiquement
+  (`export default { title, component, args, argTypes, parameters }` + une story par export nommé).
+  Les anciens liens Storybook (`?path=/story/…`) sont redirigés.
+- **Canevas isolé** (iframe `canvas.html`) : thème clair/sombre, intensité des animations
+  (cinéma / sobre / aucune), haut contraste, fonds (charte, aurore, grille, damier), viewports
+  mobile / tablette / bureau, contours de mise en page, ouverture d'une story seule dans un onglet.
+- **Panneau d'outils** : *Contrôles* (déduits des `argTypes`, des args et des commentaires
+  `/** a | b | c */` des props), *Actions* (événements émis par le composant), *Code* (gabarit avec
+  les args courants + source du fichier), *Accessibilité* (textes alternatifs, noms accessibles,
+  étiquettes, identifiants, contraste AA) et *API*.
+- **Documentation** par composant : toutes ses stories, le code de chacune et la référence d'API
+  (props, défauts, événements, slots) lue dans la source `.vue`.
+- Raccourcis : `/` ou `Ctrl+K` rechercher, `T` thème, `J`/`K` story suivante/précédente,
+  `P` panneau, `F` mode focus, `O` contours, `R` remonter la story.
+
+Une story devient pilotable par le panneau Contrôles dès que sa fonction de rendu reçoit les args :
+`render: (args) => ({ components: { AltX }, setup: () => ({ args }), template: '<AltX v-bind="args" />' })`.
+
 ### Tests
 
 Les tests vivent dans `tests/` et tournent avec **Vitest** + **@vue/test-utils** (DOM simulé par happy-dom) :
@@ -302,9 +326,9 @@ Toute nouvelle règle de validation ou tout nouveau composant de parcours doit a
 ### Intégration continue
 
 Le workflow `.github/workflows/ci.yml` s'exécute à chaque push et à chaque pull request :
-installation (`npm ci`), lint, typecheck, tests, build de la bibliothèque et build Storybook.
+installation (`npm ci`), lint, typecheck, tests, build de la bibliothèque et build du playground.
 
-Le workflow `.github/workflows/pages.yml` publie le Storybook sur GitHub Pages
+Le workflow `.github/workflows/pages.yml` publie le playground sur GitHub Pages
 (<https://its-53.github.io/Altoneo-Charting/>) à chaque push sur `main`.
 
 Pour une démo locale sous Windows : `.\demo.ps1` (serveur de dev) ou `.\demo.ps1 -Static`

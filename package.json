@@ -34,8 +34,9 @@
     "*.vue"
   ],
   "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "playground": "vite --config playground/vite.config.js",
+    "build-playground": "vite build --config playground/vite.config.js",
+    "preview-playground": "vite preview --config playground/vite.config.js",
     "build": "vite build",
     "icons": "node scripts/build-icons.mjs",
     "test": "vitest run",
@@ -49,10 +50,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@storybook/addon-a11y": "^10.6.4",
-    "@storybook/addon-docs": "^10.6.4",
-    "@storybook/vue3": "^10.6.4",
-    "@storybook/vue3-vite": "^10.6.4",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.5.4",
@@ -61,7 +58,6 @@
     "globals": "^17.6.0",
     "happy-dom": "^21.0.4",
     "postcss": "^8.5.31",
-    "storybook": "^10.6.4",
     "tailwindcss": "^3.4.17",
     "typescript": "~6.0.3",
     "vite": "^8.3.5",

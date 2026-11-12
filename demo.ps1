@@ -1,11 +1,11 @@
 ﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
-    Mode démo Altoneo-Charting : lance la documentation Storybook en local.
+    Mode démo Altoneo-Charting : lance le playground (documentation interactive) en local.
 
 .DESCRIPTION
     Vérifie l'environnement (Node/npm), installe les dépendances si nécessaire,
-    puis démarre Storybook. Deux modes :
+    puis démarre le playground Altonéo. Deux modes :
       - dev (par défaut) : rechargement à chaud, idéal pour bidouiller les composants ;
       - statique (-Static) : build de production servi en local, c'est exactement
         ce que verront les gens sur la démo publique.
@@ -14,7 +14,7 @@
     Port d'écoute. 6006 par défaut.
 
 .PARAMETER Static
-    Construit le Storybook (storybook-static/) et le sert au lieu du serveur de dev.
+    Construit le playground (playground-dist/) et le sert au lieu du serveur de dev.
 
 .PARAMETER Reinstall
     Force une réinstallation propre des dépendances.
@@ -77,7 +77,7 @@ if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
 $nodeVersion = (& node -v).Trim()
 $nodeMajor = [int](($nodeVersion -replace '^v', '').Split('.')[0])
 if ($nodeMajor -lt $MinNodeMajor) {
-    Fail "Node $nodeVersion est trop ancien (Storybook 10 et Vite 8 demandent Node $MinNodeMajor+)." "Mettez à jour depuis https://nodejs.org."
+    Fail "Node $nodeVersion est trop ancien (Vite 8 demande Node $MinNodeMajor+)." "Mettez à jour depuis https://nodejs.org."
 }
 Write-Ok "Node $nodeVersion / npm $((& npm -v).Trim())"
 
@@ -144,9 +144,9 @@ else {
 $url = "http://localhost:$Port"
 
 if ($Static) {
-    Write-Step "Build statique du Storybook"
-    & npm run build-storybook
-    if ($LASTEXITCODE -ne 0) { Fail "Le build Storybook a échoué." }
+    Write-Step "Build statique du playground"
+    & npm run build-playground
+    if ($LASTEXITCODE -ne 0) { Fail "Le build du playground a échoué." }
 
     Write-Host ""
     Write-Step "Démo statique servie sur $url"
@@ -157,15 +157,15 @@ if ($Static) {
         Start-Job -ScriptBlock { Start-Sleep -Seconds 2; Start-Process $using:url } | Out-Null
     }
 
-    & node 'scripts\serve-storybook-static.mjs' --port $Port
+    & npm run preview-playground -- --port $Port --strictPort
 }
 else {
     Write-Host ""
-    Write-Step "Démarrage de Storybook sur $url"
+    Write-Step "Démarrage du playground sur $url"
     Write-Ok "Rechargement à chaud actif — Ctrl+C pour arrêter."
     Write-Host ""
 
-    $sbArgs = @('run', 'storybook', '--', '--port', "$Port")
-    if ($NoOpen) { $sbArgs += '--no-open' }
-    & npm @sbArgs
+    $pgArgs = @('run', 'playground', '--', '--port', "$Port")
+    if (-not $NoOpen) { $pgArgs += '--open' }
+    & npm @pgArgs
 }

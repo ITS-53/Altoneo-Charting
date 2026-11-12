@@ -1,7 +1,7 @@
-# Déploiement de la documentation Storybook sur GitHub Pages
+# Déploiement du playground (documentation interactive) sur GitHub Pages
 # à chaque push sur main (et à la demande).
 # URL : https://its-53.github.io/Altoneo-Charting/
-name: Storybook (Pages)
+name: Playground (Pages)
 
 on:
   push:
@@ -31,14 +31,14 @@ jobs:
       - name: Installation
         run: npm ci
 
-      - name: Build Storybook
-        run: npm run build-storybook -- --quiet
+      - name: Build playground
+        run: npm run build-playground
 
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: storybook-static
+          path: playground-dist
 
   deploy:
     needs: build
